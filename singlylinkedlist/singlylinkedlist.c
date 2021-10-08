@@ -1,6 +1,19 @@
+/*
+* File: singlylinkedlist.c
+*
+* Description: This file contains the c code for singly linked list data
+* structure.
+*
+* Change History: Oct 2021
+*
+* Creator: tarun14
+*
+*/
+
 #include <stdio.h>
 #include<stdlib.h>
 
+/* Linked List node */
 struct node{
 	int val;
 	struct node *next;
