@@ -1,33 +1,47 @@
-/*
-* File: singlylinkedlist.c
+/*H**********************************************************************
+* FILENAME :        singlylinkedlist.c             DESIGN REF: FMCM00
 *
-* Description: This file contains the c code for singly linked list data
-* structure.
+* DESCRIPTION :
+*       Singly linkedlist(SLL) with various operations.
 *
-* Change History: Oct 2021
+* PUBLIC FUNCTIONS :
+*       
 *
-* Creator: tarun14
 *
-*/
+* NOTES :
+*       
+*      
+*
+*       Copyright info:
+*
+* AUTHOR :    Tarun14        START DATE :    08 Oct 21
+*
+* CHANGES :
+*
+* REF NO  VERSION DATE    WHO     DETAIL
+* 
+*
+*H*/
+
 
 #include <stdio.h>
 #include<stdlib.h>
 
-/* Linked List node */
+/* Singly linkedlist(SLL) node */
 struct node{
 	int val;
 	struct node *next;
 };
 
-/* Initialize the 'start' pointer with NULL */
+/* 'Start' pointer for SLL */
 struct node *Start = NULL;
 
-/* Show the list */
 
+/* Show nodes of SLL */
 void showlist(void)
 {
 	struct node *pos;
-	/* Store value of Start in temp variable */
+	/* Store value of 'Start' in 'temp' variable */
 	pos = Start;
 
 	if(pos == NULL){
@@ -47,7 +61,7 @@ void showlist(void)
 	return;
 }
 
-/* Add node at beginning */
+/* Add node to SLL at beginning */
 void addnodeatbeg(struct node *temp)
 {
 	struct node *pos;
@@ -80,40 +94,33 @@ int main()
 	/* Pointer to hold the address of new node */
 	struct node* temp;
 
-	/* Create a new node and store it's address in temp */
+	/* Create a new node */
 	temp = (struct node*)malloc(sizeof(struct node));
 	temp->val=4;
-	/* Add node at beginning */
+	/* Add node to SLL at beginning */
 	addnodeatbeg(temp);
 	showlist();
 	
-	/* Create a new node and store it's address in temp */
- 69     temp = (struct node*)malloc(sizeof(struct node));
- 70     temp->val=1;
- 71     /* Add node at beginning */
- 72     addnodeatbeg(temp);
- 73     showlist();
+	/* As above */
+ 	temp = (struct node*)malloc(sizeof(struct node));
+ 	temp->val=1;
+ 	addnodeatbeg(temp);
+ 	showlist();
 
-        /* Create a new node and store it's address in temp */
- 69     temp = (struct node*)malloc(sizeof(struct node));
- 70     temp->val=2;
- 71     /* Add node at beginning */
- 72     addnodeatbeg(temp);
- 73     showlist();
+ 	temp = (struct node*)malloc(sizeof(struct node));
+ 	temp->val=2;
+ 	addnodeatbeg(temp);
+ 	showlist();
 
-        /* Create a new node and store it's address in temp */
- 69     temp = (struct node*)malloc(sizeof(struct node));
- 70     temp->val=3;
- 71     /* Add node at beginning */
- 72     addnodeatbeg(temp);
- 73     showlist();
+ 	temp = (struct node*)malloc(sizeof(struct node));
+ 	temp->val=3;
+ 	addnodeatbeg(temp);
+ 	showlist();
 
-	/* Create a new node and store it's address in temp */
- 69     temp = (struct node*)malloc(sizeof(node));
- 70     temp->val=7;
- 71     /* Add node at beginning */
- 72     addnodeatbeg(temp);
- 73     showlist();
+ 	temp = (struct node*)malloc(sizeof(struct node));
+ 	temp->val=7;
+ 	addnodeatbeg(temp);
+ 	showlist();
 
 return 0;
 }
