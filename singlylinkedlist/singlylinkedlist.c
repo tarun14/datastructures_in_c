@@ -118,6 +118,84 @@ void insertnodeatbeg(void)
 	return;
 }
 
+/* Insert node at end */
+void insertnodeatend(void)
+{
+    node *temp, *pos;
+    /* Store current value of Start */
+    pos = Start;
+    /* A new node is created from heap */
+    temp = (node *)malloc(sizeof(node));
+    printf("Enter an integer value of node:");
+    /* Collect the value into node */
+    scanf("%d",&(temp->val));
+
+    /* Empty list */
+    if(pos == NULL){
+        temp->next = NULL;
+        Start = temp;
+    }
+    else{
+        /* Insert new node at end */
+        while(pos->next != NULL){
+            pos = pos->next;
+        }
+        temp->next = NULL;
+        pos->next = temp;
+    }
+    return;
+}
+
+/* Delete node at beginning */
+void deletenodeatbeg(void)
+{
+    node *pos;
+    
+	/* Store current value of Start */
+    pos = Start;
+
+    if(pos == NULL){
+        printf("The list is already empty\n");
+    }
+    else{
+        Start = pos->next;
+        free(pos);
+        printf("First node of list is deleted\n");
+    }
+
+    return;
+}
+/* Delete node at end */
+void deletenodeatend(void)
+{
+    node *pos, *prev_node;
+    pos = Start;
+
+    /* The list is empty */
+    if(pos == NULL){
+        printf("The list is already empty\n");
+    }
+    else{
+        while(pos->next != NULL){
+            prev_node = pos;
+            pos = pos->next;
+        }
+        /* Only node of single node list is deleted */
+        /* List is empty now */
+        if(Start->next == NULL){
+            Start=NULL;
+        }
+        /* Last node deleted, prev node will now be last node */
+        else{
+            prev_node->next = NULL;
+        }
+        /* Free previous last node */
+        free(pos);
+        printf("Last node of list is deleted\n");
+    }
+    return;
+}
+
 /* MAIN function */
 int main()
 {
@@ -142,21 +220,38 @@ int main()
         scanf("%d",&input);
         
         switch(input){
+        /* Insert node at beginning */
         case 1:
             insertnodeatbeg();
             printf("List after insertion at beginning\n:");
             showlist();
             break;
+        /* Insert node at end */
         case 2:
+            insertnodeatend();
+            printf("List after insertion at end\n:");
+            showlist();
             break;
+        /* Delete node at beginning */
         case 3:
+            deletenodeatbeg();
+            printf("List after deletion at beginning\n:");
+            showlist();
             break;
+        /* Delete node at end */
         case 4:
+            deletenodeatend();
+            printf("List after deletion at end\n:");
+            showlist();
             break;
+        /* Display linked list */
         case 5:
+            showlist();
             break;
+        /* Reverse linked list */
         case 6:
             break;
+        /* Quit, free all nodes */
         case 7:
             freelist();
             exit = true;
@@ -165,57 +260,10 @@ int main()
             printf("!!!!!!!!!Enter a valid input!!!!!!!!\n");
             break;
         }
-
         /* Break out of while loop */
         if(exit)
             break;
     }
-
     printf("Good Bye!!!\n");
-    /* Free all created nodes */
-    /* freeallnodes();*/
-	/* Create a new node */
-//    printf("Enter new node:");
-//    scanf("%d",&val);
-//	temp = (node*)malloc(sizeof(node));
-//	temp->val=val;
-//	/* Add node to SLL at beginning */
-//	addnodeatbeg(temp);
-//
-//
-//    /* Create a new node */
-//    printf("Enter node:");
-//    scanf("%d", &val);
-//    temp1 = (node*)malloc(sizeof(node));
-//    temp1->val=val;
-//    /* Add node to SLL at beginning */
-//    addnodeatbeg(temp1);	
-//
-//    /* Create a new node */
-//    temp2 = (node*)malloc(sizeof(node));
-//    temp2->val=6;
-//    /* Add node to SLL at beginning */
-//    addnodeatbeg(temp2);
-//
-//    /* Create a new node */
-//    temp3 = (node*)malloc(sizeof(node));
-//    temp3->val=7;
-//    /* Add node to SLL at beginning */
-//    addnodeatbeg(temp3);
-//
-//    /* Create a new node */
-//    temp4 = (node*)malloc(sizeof(node));
-//    temp4->val=8;
-//    /* Add node to SLL at beginning */
-//    addnodeatbeg(temp4);
-//    showlist();
-//
-//    /* Delete all allocated memory pointers */
-//    free(temp);
-//    free(temp1);
-//    free(temp2);
-//    free(temp3);
-//    free(temp4);
-    
     return 0;
 }
