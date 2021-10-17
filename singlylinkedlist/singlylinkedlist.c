@@ -195,6 +195,16 @@ void deletenodeatend(void)
     }
     return;
 }
+void deletenodeatpos(void)
+{
+    int pos;
+
+    printf("Select the node position to be deleted in below list:\n");
+    showlist();
+    printf(":");
+    scanf
+
+}
 
 /* MAIN function */
 int main()
@@ -213,9 +223,11 @@ int main()
         printf("2.Insert Node at end\n");
         printf("3.Delete Node at beginning\n");
         printf("4.Delete Node at end\n");
-        printf("5.Display the linked list\n");
-        printf("6.Reverse the linked list\n");
-        printf("7.Quit\n\n:");
+        printf("5.Delete Node at nth position(pos=1 for 1st element\n");
+        printf("6.Search position of a given node\n");
+        printf("7.Display the linked list\n");
+        printf("8.Reverse the linked list\n");
+        printf("9.Quit\n\n:");
 
         scanf("%d",&input);
         
@@ -243,6 +255,12 @@ int main()
             deletenodeatend();
             printf("List after deletion at end\n:");
             showlist();
+            break;
+        /* Delete node at nth position */
+        case 5:
+            break;
+        /* Search position of a given node */
+        case 6:
             break;
         /* Display linked list */
         case 5:
