@@ -144,7 +144,12 @@ void insertnodeatpos(void)
     if( curr_node == NULL ){
         temp_node->next = NULL;
         Start = temp_node;
-        printf("Node inserted at pos:0\n");
+        if( insert_pos != 0 ){
+            printf("List was empty, so node inserted at pos:0\n");
+        }
+        else{
+            printf("Node inserted at pos:0\n");
+        }
     }
     else{
         /* If node to be inserted at 0th position */
@@ -286,8 +291,41 @@ void deletenodeatpos(void)
     return;
 }
 
-void searchnodeatpos(void)
+void searchnodepos(void)
 {
+    int value,i;
+    node *curr_node;
+    
+    /* Init current node with first node */
+    curr_node = Start;
+
+    printf("Select the node value you want to search in below list:\n");
+    showlist();
+    printf(":");
+    scanf("%d",&value);
+
+    /* List is empty */
+    if( curr_node == NULL ){
+        printf("List is empty!!!\n");
+    }   
+    else{ 
+        /* check till we don't reach list end */
+        for( i=0; curr_node->next != NULL; i++,curr_node = curr_node->next ){    
+            /* i-th node is matched */
+            if( curr_node->val == value ){
+                printf("The node is present at pos:%d\n",i);
+                return;
+            }
+        }
+        /* The last node is matched */
+        if( curr_node->val == value ){
+            printf("The node is present at pos:%d\n",i);
+        }
+        /* Node not present in the list */
+        else{
+            printf("The node is not present in the list!!!\n");
+        }
+    } 
     return;
 }
 /* Free all nodes of SLL */
@@ -383,7 +421,7 @@ int main()
             break;
         /* Search position of a given node */
         case 7:
-            searchnodeatpos();
+            searchnodepos();
             break;
         /* Display linked list */
         case 8:
